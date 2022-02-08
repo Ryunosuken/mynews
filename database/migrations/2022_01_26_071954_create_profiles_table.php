@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfilesTable extends Migration
+class CreateprofilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,11 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->bigIncrements('name');
-            $table->string('gender'); // ニュースのタイトルを保存するカラム
-            $table->string('hobby');  // ニュースの本文を保存するカラム
-            $table->string('intyroduction')->nullable();  // 画像のパスを保存するカラム
+            $table->bigIncrements('id');
+            $table->string('name'); 
+            $table->string('gender'); 
+            $table->string('hobby'); 
+            $table->string('introduction');
             $table->timestamps();
         });
     }

@@ -1,10 +1,10 @@
-// layouts/admin.blade.phpを読み込む --}}
+{{-- layouts/admin.blade.phpを読み込む --}}
 @extends('layouts.profile')
 {{-- admin.blade.phpの＠yield（'title'）に'ニュースの新規作
 成'を埋め込む --}}
 @section('title','プロフィールの新規作成')
 
-// admin.blade.php@yield('content')に以下のタグを埋め込む
+{{-- admin.blade.php@yield('content')に以下のタグを埋め込む--}}
 @section('content')
 <div class-"container">
     <div class="row">
@@ -30,7 +30,7 @@
                         <div class="col-md-10">
                             <textarea class="form-control" name="body" rows="20">{{ old('gender') }}</textarea>
                         </div>
-                    </div>
+                        </div>
                     <div class="form-group row">
                         <label class="col-md-2">趣味</label>
                         <div class="col-md-10">

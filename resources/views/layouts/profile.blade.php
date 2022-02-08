@@ -10,7 +10,7 @@ width,initial-scale=1">
 <!--CSRF Token -->
 {{--後の章で説明 --}}
 <meta name="csrf-token" content="{{
-crsf_token()}}">
+csrf_token()}}">
 
 {{--各ページごとにtitleタグを入れるために＠yieldで空けて
 おきます。--}}
@@ -31,19 +31,16 @@ type="text/css">
 
         <!-- Styles -->
         {{-- laravel標準で用意されているCSSを読み込みます --}}
-        <link href="{{ secure_asset('css/app.css')}}"
-rel="stylesheet">
+        <link href="{{ secure_asset('css/app.css')}}"rel="stylesheet">
         {{--この章の後半で作成するCSSを読み込みます--}}
         <link href="{{ secure_asset('css/profile.css') }}" rel="stylesheet">
             </head>
             <body>
                 <div id="app">
                 {{--画面上部に表示するナビゲーションバーです。--}}
-                <nav class="navbar navbar-expand-md
-navbar-dark navbar-laravel">
+                <nav class="navbar navbar-expand-mdnavbar-dark navbar-laravel">
                 <div class="container">
-                    <a class="navbar-brand" href"{{
-url('/')"}}">
+                    <a class="navbar-brand" href="{{url('/')}}">
                         {{ config('app.name',
 'Laravel')}}
                     </a>
@@ -99,7 +96,7 @@ auto">
     {{-- ここまでナビゲーションバー --}}
     
     <main class="py-4">
-        {{--　コンテンツをここに入れるため、@yieldであけて
+        {{--コンテンツをここに入れるため、@yieldであけて
 おきます。--}}
                 @yield('content')
             </main>
