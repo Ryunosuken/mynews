@@ -64,8 +64,14 @@ class ProfileController extends Controller
               // 該当するデータを上書きして保存する
             $profile->fill($profile_form)->save();
             
-            return redirect('admin/profile/edit');
-            }
+        $logs = new logs();
+        $logs->news_id = $news->id;
+        $logs->edited_at = Carbon::now();
+        $logs->save();
+    
+    return redirect('admin/profile/edit');
+    }
+    
     public function delete(Request $request)
   {
       // 該当するNews Modelを取得
@@ -73,7 +79,7 @@ class ProfileController extends Controller
       // 削除する
     //   $profile->delete();
       return redirect('admin/profile/');
-}
     }
+}
 
 
