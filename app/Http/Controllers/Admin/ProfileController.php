@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\Log;
 use Carbon\Carbon;
 
 class ProfileController extends Controller
@@ -35,7 +35,6 @@ class ProfileController extends Controller
   
       // News Modelからデータを取得する
       $profile = Profile::find($request->id);
-     
       if (empty($profile)) {
         abort(404);    
       }
@@ -43,33 +42,24 @@ class ProfileController extends Controller
     }
     
     public function update(Request $request)
-   {
+   { 
+            
             $this->validate($request, Profile::$rules);
             // News Modelからデータを取得する
             $profile = Profile::find($request->id);
              // 送信されてきたフォームデータを格納する
-            $Profile_form = $request->all();
-                
-            if ($request->remove == 'true')
-                {$profile_form['image_path'] = null;
-            } elseif ($request->file('image')) {
-                $path = $request->file('image')->store('public/image');
-                $profile_form['image_path'] = basename($path);
-            } else {
-                $news_form['image_path'] = $profile->image_path;
-          }
-            unset($profile_form['text']);
-            unset($profile_form['text']);
-            unset($profile_form['text']);
+             $profile_form = $request->all();
+            
+            unset($profile_form['_token']);
               // 該当するデータを上書きして保存する
             $profile->fill($profile_form)->save();
             
-        $logs = new logs();
-        $logs->news_id = $news->id;
+            $logs = new log();
+        $logs->profile_id = $profile->id;
         $logs->edited_at = Carbon::now();
         $logs->save();
-    
-    return redirect('admin/profile/edit');
+            
+            return redirect('admin/profile/edit?id=' .$profile->id );
     }
     
     public function delete(Request $request)
@@ -79,7 +69,7 @@ class ProfileController extends Controller
       // 削除する
     //   $profile->delete();
       return redirect('admin/profile/');
-    }
 }
+    }
 
 

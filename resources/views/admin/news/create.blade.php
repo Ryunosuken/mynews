@@ -6,7 +6,7 @@
 
 {{-- admin.blade.php@yield('content')に以下のタグを埋め込む--}}
 @section('content')
-<div class-"container">
+<div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h2>ニュース新規作成</h2>
